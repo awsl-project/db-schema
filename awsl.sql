@@ -19,6 +19,7 @@ CREATE TABLE `awsl_blob` (
   `awsl_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `pic_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `pic_info` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `pic_id` (`pic_id`),
   KEY `awsl_id` (`awsl_id`),
@@ -49,6 +50,9 @@ CREATE TABLE `awsl_pic` (
   `sequence` int DEFAULT NULL,
   `pic_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `pic_info` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `deleted` tinyint(1) DEFAULT NULL,
+  `cleaned` tinyint DEFAULT NULL,
+  `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `awsl_id` (`awsl_id`),
   CONSTRAINT `awsl_pic_ibfk_1` FOREIGN KEY (`awsl_id`) REFERENCES `awsl_mblog` (`id`)
@@ -76,4 +80,3 @@ CREATE TABLE `awsl_producer` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
